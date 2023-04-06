@@ -94,14 +94,14 @@ fn main() -> Result<(), core::convert::Infallible> {
             }
 
         }
+
         match (key_left.sample(tick), key_right.sample(tick)) {
-            (BtnState::SHORT, BtnState::NONE) => menu.up(),
-            (BtnState::NONE, BtnState::SHORT) => menu.down(),
+            (BtnState::SHORT, BtnState::NONE) => menu.down(),
+            (BtnState::NONE, BtnState::SHORT) => menu.up(),
             _ => (),
         }
 
         if menu.need_redraw() {
-            println!("Update menu");
             menu.draw(&mut display).unwrap();
         }
 
